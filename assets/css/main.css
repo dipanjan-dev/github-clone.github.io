@@ -431,15 +431,35 @@ footer ul li {
     transition: 0.5s;
 }
 
+
 @media screen and (max-width: 480px) {
+    .hero{
+        height: auto;
+    }
     .hero .left-col h1{
         font-size: 36px;
     }
     .animation-earth{
         display: none;
     }
+    .main-dark-content{
+        padding : 7px;
+    }
+    .nav-second{
+        padding : 10px;
+    }
+    .nav-second li{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .nav-second li a{
+        font-size: 11px;
+    }
     .lottie-two{
         display: none;
+    }
+    .main-content-inside h1{
+        font-size: 36px;
     }
     .main-content-inside .down-row img{
         height: 110px;
@@ -462,8 +482,36 @@ footer ul li {
     .cta span{
         font-size: 14px;
     }
+    .about{
+        margin-bottom: 0;
+    }
     .about .tech-card{
         background-image: none;
-        margin-top: 50px;
+        padding-left: 0;
+        margin: 70px 10px ;
+    }
+    footer img {
+        height: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        margin-top: 30px;
+    }
+    .copyright{
+        justify-content: center;
+    }
+    .copyright .row .col{
+        justify-content: center;
+    }
+    .copyright .row .right-col{
+        justify-content: center;
+        margin-top: 30px;
+    }
+    footer{
+        padding: 20px;
+    }
+    footer .footer-col{
+        margin-top: 30px;
     }
   }

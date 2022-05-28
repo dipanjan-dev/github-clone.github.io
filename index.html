@@ -9,6 +9,71 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="stylesheet" href="./assets/css/responsive.css">
+    <style>
+        body.offcanvas-active{
+            overflow:hidden;
+        }
+        
+        .offcanvas-header{ display:none; }
+        
+        .screen-darken{
+            height: 100%;
+            width:0%;
+            z-index: 30;
+            position: fixed;
+            top: 0;
+            right: 0;
+            opacity:0;
+            visibility:hidden;
+            background-color: rgba(34, 34, 34, 0.6);
+            transition:opacity .2s linear, visibility 0.2s, width 2s ease-in;
+        }
+        
+        .screen-darken.active{
+            z-index:10; 
+            transition:opacity .3s ease, width 0s;
+            opacity:1;
+            width:100%;
+            visibility:visible;
+        }
+        .mobile-offcanvas{ 
+            display: none;
+        }
+        
+        /* ============ mobile view ============ */
+        @media all and (max-width: 991px) {
+            
+            .offcanvas-header{ display:block; }
+            .mobile-offcanvas{ 
+                display:  block;
+                background-color: aliceblue !important;
+            }
+            
+            .mobile-offcanvas{
+                visibility: hidden;
+                transform:translateX(-100%);
+                border-radius:0; 
+                display:block;
+                position: fixed;
+                top: 0; left:0;
+                height: 100%;
+                z-index: 1200;
+                width:80%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                transition: visibility .3s ease-in-out, transform .3s ease-in-out;
+            }
+        
+            .mobile-offcanvas.show{
+                visibility: visible;
+                transform: translateX(0);
+            }
+            .mobile-offcanvas .container, .mobile-offcanvas .container-fluid{
+                display: block;
+            }
+        
+        }	
+    </style>
 </head>
 
 <body>
@@ -18,9 +83,7 @@
                 <a class="navbar-brand" href="#">
                     <img src="./assets/img/logo-white.png" alt="" height="40" />
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-trigger="navbar_main">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -75,6 +138,59 @@
                 </div>
             </div>
         </nav>
+        <!-- MOBILE NAVIGATION BAR -->
+        <span class="screen-darken"></span>
+        <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-light bg-primary">
+            <div class="container-fluid">
+               <div class="offcanvas-header">  
+                   <button class="btn-close float-end"></button>
+               </div>
+               <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Product
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Mobile</a></li>
+                        <li><a class="dropdown-item" href="#">Computer</a></li>
+                        <li><a class="dropdown-item" href="#">Support</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            <a class="dropdown-item fw-bold" href="#">Sponsors</a>
+                        </li>
+                        <li><a class="dropdown-item fw-bold" href="#">Story</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </li>
+                    </ul>
+                </li>
+               </ul>
+           
+            </div> <!-- container-fluid.// -->
+           </nav>
+        <!-- END MOBILE NAVIGATION BAR -->
         <div class="hero">
             <div class="container">
                 <div class="hero-inner">
@@ -384,10 +500,10 @@
     </div>
     <footer>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-12">
                 <img src="./assets/img/transparent aacharya logo black.png"  alt="">
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-6 footer-col">
                 <p class="font-monospace">Product</p>
                 <ul class="list-unstyled"> 
                     <li><a href="">Features</a></li>
@@ -399,7 +515,7 @@
                     <li><a href=""> Pricing </a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-6 footer-col">
                 <p class="font-monospace">Product</p>
                 <ul class="list-unstyled"> 
                     <li><a href="">Features</a></li>
@@ -411,7 +527,7 @@
                     <li><a href=""> Pricing </a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-6 footer-col">
                 <p class="font-monospace">Product</p>
                 <ul class="list-unstyled"> 
                     <li><a href="">Features</a></li>
@@ -423,7 +539,7 @@
                     <li><a href=""> Pricing </a></li>
                 </ul>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 col-6 footer-col">
                 <p class="font-monospace">Product</p>
                 <ul class="list-unstyled"> 
                     <li><a href="">Features</a></li>
@@ -458,6 +574,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="./assets/js/navigation.js"></script>
     <script>
         window.addEventListener("keydown", (e) => {
             if ((e.ctrlKey || e.metaKey) && e.code === "KeyF") {
@@ -468,7 +585,54 @@
         });
         let copyrightYear = new Date().getFullYear();
         console.log(copyrightYear)
-        document.getElementById("copyright_year").innerHTML = copyrightYear
+        document.getElementById("copyright_year").innerHTML = copyrightYear;
+        
+        function darken_screen(yesno){
+            if( yesno == true ){
+                document.querySelector('.screen-darken').classList.add('active');
+            }
+            else if(yesno == false){
+                document.querySelector('.screen-darken').classList.remove('active');
+            }
+        }
+        
+        function close_offcanvas(){
+            darken_screen(false);
+            document.querySelector('.mobile-offcanvas.show').classList.remove('show');
+            document.body.classList.remove('offcanvas-active');
+        }
+        
+        function show_offcanvas(offcanvas_id){
+            darken_screen(true);
+            document.getElementById(offcanvas_id).classList.add('show');
+            document.body.classList.add('offcanvas-active');
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelectorAll('[data-trigger]').forEach(function(everyelement){
+                
+                let offcanvas_id = everyelement.getAttribute('data-trigger');
+                
+                everyelement.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    show_offcanvas(offcanvas_id);
+                      
+                });
+            });
+        
+            document.querySelectorAll('.btn-close').forEach(function(everybutton){
+                
+                everybutton.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    close_offcanvas();
+                  });
+            });
+        
+            document.querySelector('.screen-darken').addEventListener('click', function(event){
+                close_offcanvas();
+            });
+            
+        }); 
     </script>
 </body>
 
